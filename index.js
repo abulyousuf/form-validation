@@ -1,5 +1,7 @@
 // Exercise 1: create a form and add validation
 
+// Stage 1
+
 // Create a form that has these fields, with these validation requirements:
 
 // a text input
@@ -21,6 +23,22 @@
 // Only submit if all the conditions are met.
 // All the validation should be in JS (no HTML5 attributes!)
 // The user should see an error message if the conditions are not met.
+
+// Stage 2
+
+// Refactor to use functions, and to clear the errors when a field is valid.
+
+// ***************************************************************************
+
+// Exercise 2:
+// Add an optional field that requires these characters:
+
+// at least one number: 0-9
+// at least one uppercase letter: A-Z
+// at least one lowercase letter: a-z
+// at least one exclamation mark: !
+
+// If the field is empty, it must NOT show an error message.
 
 
 const maxLengthReq = document.querySelector("#max-length-req");
@@ -103,4 +121,27 @@ form.addEventListener("submit", (event) => {
         const errorMessage5 = document.querySelector("#error-message5");
         errorMessage5.innerText = "";
     }
+
+    const regExp = document.querySelector("#reg-exp");
+
+    const str = regExp.value;
+    console.log(str);
+
+    if (str !== "") {
+        if ((str.match(/.*[A-Z]/) === null) ||
+            (str.match(/.*[a-z]/) === null) ||
+            (str.match(/.*[0-9]/) === null) ||
+            (str.match(/.*[!]/) === null)) {
+            console.log("ss")
+            const errorMessage6 = document.querySelector("#error-message6");
+            errorMessage6.innerText = "Required: at least one number: 0-9, one uppercase letter: A-Z, one lowercase letter: a-z, one exclamation mark: !!";
+        } else {
+            const errorMessage6 = document.querySelector("#error-message6");
+            errorMessage6.innerText = "";
+        }
+    } else {
+        const errorMessage6 = document.querySelector("#error-message6");
+        errorMessage6.innerText = "";
+    }
 });
+
